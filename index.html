@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo- & Putzplan</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <h1>Mein Alltag</h1>
+  <button class="dark-toggle" onclick="toggleTheme()">🌙/☀️ Modus wechseln</button>
+  <div class="import-export">
+    <button onclick="exportData()">📁 Exportieren</button>
+    <input type="file" onchange="importData(event)">
+  </div>
+  <section>
+    <h2>ToDo-Liste</h2>
+    <input type="text" id="todoInput" placeholder="Neue Aufgabe">
+    <input type="datetime-local" id="todoReminder">
+    <select id="todoRepeat">
+      <option value="">Keine Wiederholung</option>
+      <option value="daily">Täglich</option>
+      <option value="weekly">Wöchentlich</option>
+    </select>
+    <button onclick="addTask('todo')">Hinzufügen</button>
+    <ul id="todoList"></ul>
+  </section>
+  <section>
+    <h2>Putzplan</h2>
+    <input type="text" id="putzInput" placeholder="Neue Putzaufgabe">
+    <input type="datetime-local" id="putzReminder">
+    <select id="putzRepeat">
+      <option value="">Keine Wiederholung</option>
+      <option value="daily">Täglich</option>
+      <option value="weekly">Wöchentlich</option>
+    </select>
+    <button onclick="addTask('putz')">Hinzufügen</button>
+    <ul id="putzList"></ul>
+  </section>
+  <section class="calendar">
+    <h2>Kalender (nächste Termine)</h2>
+    <ul id="calendarList"></ul>
+  </section>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(() => {
+        console.log('Service Worker registriert');
+      });
+    }
+  </script>
+</body>
+</html>

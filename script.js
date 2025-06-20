@@ -1,0 +1,1 @@
+(Der vollständige Inhalt von script.js, wie oben angezeigt, wird hier eingefügt.)
